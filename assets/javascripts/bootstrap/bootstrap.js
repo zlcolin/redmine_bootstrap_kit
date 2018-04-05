@@ -73,6 +73,16 @@ $(window).resize(function() {
   $(".ui-dialog-content").dialog("option", "position", ['center', 'center']);
 });
 
+//Enable HTML in modal box
+$.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+    _title: function(title) {
+        if (!this.options.title ) {
+            title.html("&#160;");
+        } else {
+            title.html(this.options.title);
+        }
+    }
+}));
 
 // Transform div in Dialog box
 function initModalBoxes(modals){
